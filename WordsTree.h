@@ -9,8 +9,6 @@ public:
     WordsTree(Dictionary &dict);
     ~WordsTree();
 
-    void fff() {};
-
     // find a chain from search word to destination word
     bool FindChain(const string &src_word, const string &dst_word, vector<string> &chain);
 

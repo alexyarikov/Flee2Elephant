@@ -12,7 +12,7 @@ public:
     ~Fly2Elephant();
 
     // transform function, returns transformations chain
-    bool Transform(const string &words_path, const string &dictionary_path, vector<string> &chain);
+    bool Transform(const string &words_path, const string &dictionary_path, vector<string> &chain, string &msg);
 
 private:
     // source and destination words
@@ -26,5 +26,5 @@ private:
     WordsTree m_tree;
 
     // load source and destination words from file
-    bool LoadWords(const string &path);
+    bool LoadWords(const string &path, string &msg);
 };

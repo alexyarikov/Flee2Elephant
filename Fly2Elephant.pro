@@ -7,7 +7,8 @@ CONFIG -= qt
 SOURCES += main.cpp \
     Fly2Elephant.cpp \
     Dictionary.cpp \
-    WordsTree.cpp
+    WordsTree.cpp \
+    Test.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -16,5 +17,6 @@ HEADERS += \
     stdafx.h \
     Fly2Elephant.h \
     Dictionary.h \
-    WordsTree.h
+    WordsTree.h \
+    Test.h
 

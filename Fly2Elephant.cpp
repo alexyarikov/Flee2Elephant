@@ -11,30 +11,31 @@ Fly2Elephant::~Fly2Elephant()
 {
 }
 
-// transform source work to destination word
-bool Fly2Elephant::Transform(const string &words_path, const string &dictionary_path, vector<string> &chain)
+// transform source word to destination word
+bool Fly2Elephant::Transform(const string &words_path, const string &dictionary_path, vector<string> &chain, string &msg)
 {
     // load source/destination words and dictionary
-    if (!LoadWords(words_path))
+    if (!LoadWords(words_path, msg))
         return false;
+
+    // load dictionary
+    if (!m_dict.Load(dictionary_path, m_src_word.length(), msg))
+        return false;
+
+    // check that source and destination words are contained in dictionary
+    if (!m_dict.Contains(m_src_word) || !m_dict.Contains(m_dst_word))
+    {
+        msg = "ERROR: source and destination words should be contained in dictionary";
+        return false;
+    }
 
     // check if source and destination words are equal
     if (m_src_word.compare(m_dst_word) == 0)
     {
         chain.push_back(m_src_word);
         chain.push_back(m_dst_word);
+        msg = "WARNING: source and destination words are equal";
         return true;
-    }
-
-    // load dictionary
-    if (!m_dict.Load(dictionary_path, m_src_word.length()))
-        return false;
-
-    // check that source and destination words are contained in dictionary
-    if (!m_dict.Contains(m_src_word) || !m_dict.Contains(m_dst_word))
-    {
-        printf("ERROR: source and destination words should be contained in dictionary");
-        return false;
     }
 
     // search for a chain from source word to destination word
@@ -42,7 +43,7 @@ bool Fly2Elephant::Transform(const string &words_path, const string &dictionary_
 }
 
 // load source and destination words from file
-bool Fly2Elephant::LoadWords(const string &path)
+bool Fly2Elephant::LoadWords(const string &path, string &msg)
 {
     // clear result
     m_src_word.clear();
@@ -52,14 +53,14 @@ bool Fly2Elephant::LoadWords(const string &path)
     std::ifstream f(path.c_str());
     if(!f)
     {
-        printf("ERROR: failed to open words file '%s'\r\n", path.c_str());
+        msg = "ERROR: failed to open words file '%s'\r\n", path.c_str();
         return false;
     }
 
     // read file
     if (!getline(f, m_src_word) || !getline(f, m_dst_word) || m_src_word.empty() || m_dst_word.empty())
     {
-        printf("ERROR: failed to read source/destination words\r\n");
+        msg = "ERROR: failed to read source/destination words\r\n";
         return false;
     }
 
@@ -70,7 +71,7 @@ bool Fly2Elephant::LoadWords(const string &path)
     // check length
     if (m_src_word.length() != m_dst_word.length())
     {
-        printf("ERROR: source and destination strings have different length\r\n");
+        msg = "ERROR: source and destination strings have different length\r\n";
         return false;
     }
 

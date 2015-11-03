@@ -2,13 +2,13 @@
 #include "Dictionary.h"
 
 // load dictionary from file into dictionary vector
-bool Dictionary::Load(const string &path, size_t word_length)
+bool Dictionary::Load(const string &path, size_t word_length, string &msg)
 {
     // open file stream
     std::ifstream f(path.c_str());
     if(!f)
     {
-        printf("ERROR: failed to open dictionary file '%s'\r\n [%s]", path.c_str(), strerror(errno));
+        msg = "ERROR: failed to open dictionary file '%s'\r\n", path.c_str();
         return false;
     }
 

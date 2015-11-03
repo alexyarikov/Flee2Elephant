@@ -11,7 +11,7 @@ public:
     typedef unordered_map<string, bool> DictionaryData;
 
     // load dictionary from file
-    bool Load(const string &path, size_t word_length);
+    bool Load(const string &path, size_t word_length, string &msg);
 
     // check that word is contained in the dictionary
     bool Contains(const std::string &word) const;
