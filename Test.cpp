@@ -244,7 +244,6 @@ void Test::Test10()
 }
 
 // impossible transform test
-// transform test
 void Test::Test11()
 {
     ofstream f1("words");
