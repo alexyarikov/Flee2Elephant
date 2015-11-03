@@ -8,7 +8,7 @@ bool Dictionary::Load(const string &path, size_t word_length, string &msg)
     std::ifstream f(path.c_str());
     if(!f)
     {
-        msg = "ERROR: failed to open dictionary file '%s'\r\n", path.c_str();
+        msg = "ERROR: failed to open dictionary file " + path.c_str() + "\r\n";
         return false;
     }
 
