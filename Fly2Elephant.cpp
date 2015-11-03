@@ -53,7 +53,7 @@ bool Fly2Elephant::LoadWords(const string &path, string &msg)
     std::ifstream f(path.c_str());
     if(!f)
     {
-        msg = "ERROR: failed to open words file " + path.c_str() + "\r\n";
+        msg = "ERROR: failed to open words file " + path + "\r\n";
         return false;
     }
 
