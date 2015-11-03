@@ -11,5 +11,6 @@
 #include <unordered_map>
 #include <algorithm>
 #include <cassert>
+#include <cctype>
 
 using namespace std;
