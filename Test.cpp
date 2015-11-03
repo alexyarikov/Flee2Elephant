@@ -268,7 +268,7 @@ void Test::Test11()
     string msg;
 
     bool res = f2e.Transform("words", "dict", chain, msg);
-    printf(!res ? "Test10:\tpassed\r\n" : "Test10:\tfailed\r\n");
+    printf(!res ? "Test11:\tpassed\r\n" : "Test11:\tfailed\r\n");
 
     remove("words");
     remove("dict");
