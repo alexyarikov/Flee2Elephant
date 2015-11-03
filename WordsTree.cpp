@@ -98,7 +98,7 @@ bool WordsTree::FindChain(Node *node, const string &src_word, vector<string> &ch
     for (size_t i = 0; i < node->word->length(); ++i)
     {
         // iterate through all letters
-        for (char c = 'a'; c < 'z'; ++c)
+        for (char c = 'a'; c <= 'z'; ++c)
         {
             // get new word by one letter substitution
             string new_word(*node->word);
