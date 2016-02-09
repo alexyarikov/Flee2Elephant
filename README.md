@@ -1,38 +1,36 @@
 # Flee2Elephant
 Приложение Flee2Elephant решает следующую задачу.
 
-Дано исходное и конечное слово равной длины. Длина исходных слов не ограничена.
-Необходимо составить цепочку слов от исходного слова до конечного. Каждое следующее
-слово в цепочке может отличаться от предыдущего только одной буквой. Исходное,
-конечное и все промежуточные слова должны состоять из одинакового количества букв.
-Все используемые слова обязательно должны содержаться в заранее определенном словаре.
+This application solves the following problem:
 
-На вход в программу подается:
+Given source and destination words specified length. Length of words has no limits.
+The problem is to make a chain (path) from source word to destination word so that:
 
-1. Путь к текстовому файлу, в котором указано начальное и конечное слово. На первой
-строке указано начальное слово, на второй строке конечное
+- each word in chain differs from a previous word in only one letter
+- the source, the destination and all words in chain have the same length
+- the source, the destination and all words in chain should exist in user-specified dictionary
 
-2. Путь к файлу, который содержит словарь. Слова в словаре указаны по одному на каждой
-строке. В словаре слова могут быть разной длины.
+The input:
 
-На выходе программа выводит в консоль путь от исходного слова к конечному, по одному слову на одной строке.
+- path to text file with source (first line) and destination words (second line).
+- path to text file with words dictionary. Words are crlf-separated. Words can have different length.
 
+The output:
 
+- application prints to concole a chain from source word to destination word.
 
-Сборка:
+Build:
 $make all
 
-Запуск тестов:
+Run tests:
 $make test
 
-Запуск приложения:
+Run application:
 ./f2e words dict
 
+Restrictions, todo's etc:
 
-
-Замечания и ограничения:
-
-- для упрощения приложение не использует аллокаторы для узлов дерева и строк слов
-- для упрощения приложение работает только с английским алфавитом
-- в качестве алгоритма поиска цепочки слов выбрано построение дерева одновременно с обходом его в ширину. В вершине дерева - искомое слово. Каждый последующий уровень дерева поиска заполняется словами, отличающимися на одну букву от слова-предка. Одновременно с построением дерева происходит поиск заданного слова. Если слово найдено, проход от найденного слова до вершины дерева по узлам parent даст искомую цепочку.
-- второй вариант решения этой задачи (не реализовано) - строить граф, в вершинах которого слова словаря. Слова соединены дугой графа, если они отличаются на одну букву. После построения графа производится обход графа в ширину от вершины с исходным словом до нахождения вершины искомого. Это решение больше подходит для случаев, когда необходимо производить многократный поиск цепочек, т.к. основная сложность алгоритма - построение графа словаря - O(n*n), где n - количество слов словаря.
+- will be better to use allocators for tree nodes and words strings
+- the application works with English dictionary only
+- as main algorithm, to search a words chain, I build a words tree with its breadth-first search. In the root of tree - destination word. Each next tree level is filled with words which differ from parent-word in one letter. In the same time I search for a source word in the tree. If word is found, I make a desired words chain traversing to the root of tree.
+- as alternative way (not implemented), we could build a words graph. Graph vertices are bound if corresponding words in vertices differ in one word. So, after building of graph, we can just perform breadth-first searching of destination word. This solution if suitable for multiple words chain searches, as the O-complexity (for graph building) is O(n*n), where n - dictionary capacity.

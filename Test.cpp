@@ -98,8 +98,8 @@ void Test::Test5()
 
     bool res = f2e.Transform("words", "dict", chain, msg);
     res = res && chain.size() == 2 &&
-                 chain[0].compare("word") == 0 &&
-                 chain[1].compare("word") == 0;
+        chain[0].compare("word") == 0 &&
+        chain[1].compare("word") == 0;
 
     printf(res ? "Test5:\tpassed\r\n" : "Test5:\tfailed\r\n");
 
@@ -230,13 +230,13 @@ void Test::Test10()
 
     bool res = f2e.Transform("words", "dict", chain, msg);
     res = res && chain.size() == 7 &&
-                 chain[0].compare("shit") == 0 &&
-                 chain[1].compare("shot") == 0 &&
-                 chain[2].compare("soot") == 0 &&
-                 chain[3].compare("boot") == 0 &&
-                 chain[4].compare("bolt") == 0 &&
-                 chain[5].compare("bold") == 0 &&
-                 chain[6].compare("gold") == 0;
+        chain[0].compare("shit") == 0 &&
+        chain[1].compare("shot") == 0 &&
+        chain[2].compare("soot") == 0 &&
+        chain[3].compare("boot") == 0 &&
+        chain[4].compare("bolt") == 0 &&
+        chain[5].compare("bold") == 0 &&
+        chain[6].compare("gold") == 0;
     printf(res ? "Test10:\tpassed\r\n" : "Test10:\tfailed\r\n");
 
     remove("words");

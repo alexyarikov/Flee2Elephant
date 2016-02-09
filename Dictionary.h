@@ -4,8 +4,8 @@ class Dictionary
 {
 public:
     // constructor/destructor
-    Dictionary() {};
-    ~Dictionary() {};
+    Dictionary() { };
+    ~Dictionary() { };
 
     // dictionary type (key - word, value - processed attribute
     typedef unordered_map<string, bool> DictionaryData;

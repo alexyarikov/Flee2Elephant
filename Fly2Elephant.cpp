@@ -51,7 +51,7 @@ bool Fly2Elephant::LoadWords(const string &path, string &msg)
 
     // open file stream
     std::ifstream f(path.c_str());
-    if(!f)
+    if (!f)
     {
         msg = "ERROR: failed to open words file " + path + "\r\n";
         return false;
@@ -65,8 +65,8 @@ bool Fly2Elephant::LoadWords(const string &path, string &msg)
     }
 
     // transform words to lower case
-    std::transform(m_src_word.begin(), m_src_word.end(), m_src_word.begin(), (int (*)(int))std::tolower);
-    std::transform(m_dst_word.begin(), m_dst_word.end(), m_dst_word.begin(), (int (*)(int))std::tolower);
+    std::transform(m_src_word.begin(), m_src_word.end(), m_src_word.begin(), (int(*)(int))std::tolower);
+    std::transform(m_dst_word.begin(), m_dst_word.end(), m_dst_word.begin(), (int(*)(int))std::tolower);
 
     // check length
     if (m_src_word.length() != m_dst_word.length())

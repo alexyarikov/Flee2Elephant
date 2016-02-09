@@ -23,7 +23,10 @@ private:
         Node(const string *_word,
              Node *_parent = 0,
              Node *_child = 0,
-             Node *_sibling = 0) { word = _word; parent = _parent; child = _child; sibling = _sibling; }
+             Node *_sibling = 0)
+        {
+            word = _word; parent = _parent; child = _child; sibling = _sibling;
+        }
     };
 
     Node *m_root;           // tree root
